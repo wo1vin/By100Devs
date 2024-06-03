@@ -1,4 +1,7 @@
-const { DiffieHellmanGroup } = require('crypto');
+// load env variables
+require("dotenv").config();
+
+//import dependencies
 const express = require('express');
 const app = express();
 
@@ -8,4 +11,4 @@ app.get("/", (req,res)=>{
 })
 
 //start sserver
-app.listen(2020);
+app.listen(process.env.PORT );
