@@ -5,7 +5,7 @@ const itemSchema = new mongoose.Schema({
     description: String,
     category: String,
     submittedOn: Date,
-    author: ObjectId,
+    author: String,
 })
 
 const Item = mongoose.model("Item", itemSchema);
