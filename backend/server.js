@@ -1,7 +1,8 @@
 //import dependencies
 const express = require('express');
 const connectToDb = require('./config/connectToDb');
-const itemsController = require('./controllers/itemsController')
+const cors = require('cors');
+const itemsController = require('./controllers/itemsController');
 
 //create express app
 const app = express();
@@ -14,7 +15,7 @@ app.use(cors());
 connectToDb();
 
 //Routing
-// app.get("/", (req,res)=>{ res.json({ stat:"workin"}) })
+app.get("/", (req,res)=>{ res.json({ stat:"workin"}) })
 app.get('/items', itemsController.fetchItems);
 app.get('/items/:id', itemsController.fetchItem);
 app.post('/items',  itemsController.createItem);
