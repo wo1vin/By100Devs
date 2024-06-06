@@ -53,5 +53,27 @@ app.post('/items', async (req,res) => {
     res.json({ item: item });
 })
 
+app.put('/items/:id', async (req,res) => {
+    // get the id off the ul
+    const itemId = req.params.id;
+
+    // get the data off the req body
+    const itemName = req.body.itemName;
+    const body = req.body.body;
+
+    // find and update the record
+    await Item.findByIdAndUpdate(itemId, {
+        itemName:itemName,
+        body:body
+    })
+
+    // find and update item
+    const item =  await Item.findById(itemId);
+
+    // respond with it
+    res.json({ item: item });
+})
+
+
 //start sserver
 app.listen(process.env.PORT );
