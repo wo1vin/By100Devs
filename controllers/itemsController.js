@@ -48,7 +48,7 @@ const updateItem = async (req,res) => {
     // find and update the record
     await Item.findByIdAndUpdate(itemId, {
         itemName:itemName,
-        body:body
+       // add other properties
     })
 
     // find and update item
