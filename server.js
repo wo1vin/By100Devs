@@ -16,8 +16,25 @@ connectToDb();
 app.get("/", (req,res)=>{
     res.json({ stat:"workin"});
 })
+app.get('/items', async (req,res) => {
+    // find items
+    const items = await Item.find();
+    // respond with items
+    res.json({ items: items });
+})
 
-app.post('/notes', async (req,res) => {
+app.get('/items/:id', async (req,res) => {
+    // get id off the url
+    const itemId = req.params.id;
+
+    // find item using that id
+    const item = await Item.findById(itemId);
+
+    // respond with the item
+    res.json({ item: item });
+})
+
+app.post('/items', async (req,res) => {
     // get the sent data off req body
     const itemName = req.body.itemName;
     const description = req.body.description;
