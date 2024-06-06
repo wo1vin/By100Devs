@@ -8,6 +8,7 @@ const app = express();
 
 // configure express app
 app.use(express.json());
+app.use(cors());
 
 // connect to database
 connectToDb();
