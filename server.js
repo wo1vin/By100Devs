@@ -74,6 +74,15 @@ app.put('/items/:id', async (req,res) => {
     res.json({ item: item });
 })
 
+app.delete('/items/:id', async (req,res) => {
+    // get id off url
+    const itemId = req.params.id;
 
+    // delete the record
+    await Item.deleteOne({ id: itemId });
+
+    // respond
+    res.json({ success: "Record deleted" });
+})
 //start sserver
 app.listen(process.env.PORT );
